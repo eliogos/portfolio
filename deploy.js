@@ -10,7 +10,9 @@ console.log('Username:', username);
 console.log('API Key:', apiKey ? '[set]' : '[missing]');
 
 function getFiles(dir, fileList = []) {
+  const skip = ['node_modules', '.git', '.github', '.vscode', 'deploy.js', 'package.json', 'package-lock.json'];
   fs.readdirSync(dir).forEach(file => {
+    if (skip.includes(file)) return;
     const filePath = path.join(dir, file);
     if (fs.statSync(filePath).isDirectory()) {
       getFiles(filePath, fileList);
