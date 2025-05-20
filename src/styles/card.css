@@ -1,0 +1,39 @@
+.card {
+  background: #313131;
+  
+  border-radius: 8px;
+  border: 0.5px solid rgb(128 128 128 / 14%);
+  box-shadow: 0px 2px 4.5px 0px rgba(147, 147, 147, 0.08) inset;
+
+  
+  padding: 32px 17px;
+  display: flex;
+
+  
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+.card .content {
+  display: flex;
+  padding-bottom: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.card .content * {
+  margin: 0;
+}
+
+.card .content p {
+  color: var(--Color-Light-Foreground-Block, #F9F4F3);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: normal;
+  align-self: stretch;
+}

@@ -1,0 +1,11 @@
+.content h3 {
+  color: #C9C9C9;
+  font-family: "Tektur", sans-serif;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 93%;
+  margin: unset;
+  padding: unset;
+  cursor: default;
+}

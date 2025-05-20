@@ -1,0 +1,73 @@
+button {
+  display: flex;
+  padding: 8px 12px;
+
+  border-radius: 6px;
+  box-shadow: 0px 3px 4px 0px rgba(232, 234, 163, 0.08) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+
+  text-align: center;
+  font-family: Tektur, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #E3E3E3;
+
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+button.primary {
+  border: 1px solid #EA7110;
+  background: #EB610C;
+}
+
+button.link {
+  border: 1px solid #717171;
+  background: #595654;
+  width: 100% !important;
+}
+
+button.filter {
+  border-radius: 6px;
+  border: 0.3px solid #3C3C3C;
+  background: #434242;
+  box-shadow: 0px 2px 1.6px 0px rgba(80, 80, 80, 0.25) inset, 0px 3px 4px 0px rgba(0, 0, 0, 0.08);
+  color: #E0E0E0;
+  font-family: "IBM Plex Sans JP";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+button.fill-width {
+  align-self: stretch;
+  text-align: center;
+  justify-content: center;
+}
+
+button.icon {
+  justify-content: space-between !important;
+}
+
+a:has(> button) {
+  text-decoration: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button-group {
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
