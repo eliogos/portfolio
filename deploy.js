@@ -6,6 +6,9 @@ const username = process.env.NEOCITIES_USERNAME;
 const apiKey = process.env.NEOCITIES_API_KEY;
 const site = new Neocities(username, apiKey);
 
+console.log('Username:', username);
+console.log('API Key:', apiKey ? '[set]' : '[missing]');
+
 function getFiles(dir, fileList = []) {
   fs.readdirSync(dir).forEach(file => {
     const filePath = path.join(dir, file);
