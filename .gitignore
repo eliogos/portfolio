@@ -12,7 +12,7 @@ package-lock.json
 .DS_Store
 Thumbs.db
 
-# Environment files (if you ever use them)
+# Environment files
 .env
 .env.*
 
@@ -20,9 +20,9 @@ Thumbs.db
 logs/
 *.log
 
-# Neocities CLI cache (if any)
+# Neocities CLI cache
 .neocities/
 
-# Build output (if you ever use a build tool)
+# Build output
 dist/
 build/
