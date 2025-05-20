@@ -9,8 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to Neocities
-        uses: bcomnes/deploy-to-neocities@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          api_token: ${{ secrets.NEOCITIES_API_KEY }}
-          dist_dir: .
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy with custom Node.js script
+        run: node deploy.js
+        env:
+          NEOCITIES_USERNAME: ${{ secrets.NEOCITIES_USERNAME }}
+          NEOCITIES_API_KEY: ${{ secrets.NEOCITIES_API_KEY }}
