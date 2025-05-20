@@ -7,7 +7,7 @@ const apiKey = process.env.NEOCITIES_API_KEY;
 const site = new Neocities(username, apiKey);
 
 console.log('Username:', username);
-console.log('API Key:', apiKey ? '[set]' : '[missing]');
+console.log('API Key:', apiKey);
 
 function getFiles(dir, fileList = []) {
   const skip = ['node_modules', '.git', '.github', '.vscode', 'deploy.js', 'package.json', 'package-lock.json'];
@@ -17,7 +17,7 @@ function getFiles(dir, fileList = []) {
     if (fs.statSync(filePath).isDirectory()) {
       getFiles(filePath, fileList);
     } else {
-      fileList.push({ name: filePath.replace(/^\.\/|\\/g, ''), path: filePath });
+      fileList.push({ name: filePath.replace(/\\/g, '/').replace(/^\.\//, ''), path: filePath });
     }
   });
   return fileList;
