@@ -1,6 +1,27 @@
 export async function loadSkills() {
   try {
-    const response = await fetch('src/assets/skills.json');
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let audioBuffer = null;
+
+    // Load the audio files
+    const audioData = await fetch('src/assets/audio/ui-button-hover-2.mp3').then(res => res.arrayBuffer());
+    audioBuffer = await audioContext.decodeAudioData(audioData);
+
+    const popOutAudio = await fetch('src/assets/audio/error-5-199276.mp3').then(res => res.arrayBuffer());
+    const popOutBuffer = await audioContext.decodeAudioData(popOutAudio);
+
+    // I-V-vi-IV progression
+    const progression = [
+      1.0,    // I (C)
+      1.5,    // V (G)
+      1.667,  // vi (A)
+      1.333   // IV (F)
+    ];
+    let progressionIndex = 0;
+    let lastHoveredItem = null;
+    let popOutTimeout = null;
+
+    const response = await fetch('src/assets/data/skills.json');
     const data = await response.json();
     const container = document.getElementById('inventory');
     if (!container) return;
@@ -24,18 +45,66 @@ export async function loadSkills() {
       item.appendChild(tooltip); // Add tooltip
       container.appendChild(item);
 
-      // Bouncy animation on hover
+      // Play audio and animate on hover
       item.addEventListener('mouseenter', () => {
+        // Cancel any pending pop-out sound
+        if (popOutTimeout) {
+          clearTimeout(popOutTimeout);
+          popOutTimeout = null;
+        }
+        // Only change progression if different item
+        if (lastHoveredItem !== item) {
+          progressionIndex = (progressionIndex + 1) % progression.length;
+          lastHoveredItem = item;
+        }
+        // Play audio with current progression pitch
+        if (audioBuffer) {
+          const source = audioContext.createBufferSource();
+          source.buffer = audioBuffer;
+          source.playbackRate.value = progression[progressionIndex];
+
+          // Create a gain node for volume control
+          const gainNode = audioContext.createGain();
+          const volume = 0.4;
+          gainNode.gain.value = volume;
+
+          source.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          source.start(0);
+        }
+
         tooltip.classList.remove('wipe-exit');
         tooltip.classList.remove('rise-up-in');
-
         void tooltip.offsetWidth;
         tooltip.classList.add('rise-up-in');
         tooltip.style.visibility = 'visible';
         tooltip.style.opacity = '1';
       });
+
       item.addEventListener('mouseleave', () => {
         tooltip.classList.add('wipe-exit');
+
+        // Delay pop-out sound to compliment item gaps
+        popOutTimeout = setTimeout(() => {
+          // Check if the mouse is over any .item
+          if (!document.querySelector('.item:hover')) {
+            // Play pop-out sound
+            if (popOutBuffer) {
+              const source = audioContext.createBufferSource();
+              source.buffer = popOutBuffer;
+
+              // Create a gain node for volume control
+              const gainNode = audioContext.createGain();
+              const volume = 0.11;
+              gainNode.gain.value = volume;
+
+              source.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+              source.start(0);
+            }
+          }
+        }, 120); // Pop out sound delay
+
         setTimeout(() => {
           tooltip.classList.remove('wipe-exit');
           tooltip.classList.remove('rise-up-in');
@@ -48,7 +117,7 @@ export async function loadSkills() {
     const container = document.getElementById('inventory');
     if (container) {
       const p = document.createElement('p');
-      p.textContent = "Cannot load skills";
+      p.textContent = "Cannot load skills"; // Add a message to the container if skills failed to load.
       container.appendChild(p);
     }
     console.error('Error loading skills:', error);
