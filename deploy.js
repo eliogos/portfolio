@@ -7,7 +7,7 @@ const apiKey = process.env.NEOCITIES_API_KEY;
 const site = new Neocities(username, apiKey);
 
 function getFiles(dir, fileList = []) {
-  const skip = ['node_modules', '.git', '.github', '.vscode', 'deploy.js', 'package.json', 'package-lock.json'];
+  const skip = ['node_modules', '.git', '.github', '.vscode', 'deploy.js', 'package.json', 'package-lock.json', 'audio'];
   fs.readdirSync(dir).forEach(file => {
     if (skip.includes(file)) return;
     const filePath = path.join(dir, file);

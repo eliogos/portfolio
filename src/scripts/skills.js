@@ -4,10 +4,11 @@ export async function loadSkills() {
     let audioBuffer = null;
 
     // Load the audio files
-    const audioData = await fetch('src/assets/audio/ui-button-hover-2.mp3').then(res => res.arrayBuffer());
+    // Had to move to dropbox for now, as Neocities restricts audio files if not a supporter
+    const audioData = await fetch('https://dl.dropboxusercontent.com/scl/fi/wrycn6o2bqtcy1gmxumbu/ui-button-hover-2.mp3?rlkey=dd0ej6c919bh42xhv3ln5ionr&st=7zwkrkgt&dl=0').then(res => res.arrayBuffer());
     audioBuffer = await audioContext.decodeAudioData(audioData);
 
-    const popOutAudio = await fetch('src/assets/audio/error-5-199276.mp3').then(res => res.arrayBuffer());
+    const popOutAudio = await fetch('https://dl.dropboxusercontent.com/scl/fi/8dg7em1l9b1g1gm9wuk0m/error-5-199276.mp3?rlkey=0weq2m1pdkv7es4oxjl9o6adx&st=hgeke6tg&dl=0').then(res => res.arrayBuffer());
     const popOutBuffer = await audioContext.decodeAudioData(popOutAudio);
 
     // I-V-vi-IV progression
@@ -65,7 +66,7 @@ export async function loadSkills() {
 
           // Create a gain node for volume control
           const gainNode = audioContext.createGain();
-          const volume = 0.4;
+          const volume = 0.2;
           gainNode.gain.value = volume;
 
           source.connect(gainNode);
@@ -95,7 +96,7 @@ export async function loadSkills() {
 
               // Create a gain node for volume control
               const gainNode = audioContext.createGain();
-              const volume = 0.11;
+              const volume = 0.03;
               gainNode.gain.value = volume;
 
               source.connect(gainNode);
