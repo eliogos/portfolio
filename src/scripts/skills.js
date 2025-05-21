@@ -29,15 +29,22 @@ export async function loadSkills() {
     const data = await res.json();
     const skills = data.skills || [];
 
-    skills.forEach(skill => {
-      // Join tags for the data-tags attribute
+    // Create items once with images
+    skills.forEach((skill, index) => {
       const tags = (skill.tags || []).join(',');
-      // Create the item element
       const item = document.createElement('div');
-      item.className = 'item pop-in'; // Add pop-in class for animation
+      item.className = 'item pop-in';
       item.dataset.tags = tags;
+      item.dataset.index = index;
+      item.dataset.name = skill.name; // For sorting by name
 
-      // Tooltip span
+      // Create image
+      const img = document.createElement('img');
+      img.src = skill.url;
+      img.alt = skill.name;
+      img.classList.add('icon');
+      
+      // Create tooltip
       const tooltip = document.createElement('span');
       tooltip.className = 'tooltip';
       const tooltipText = document.createElement('span');
@@ -45,15 +52,12 @@ export async function loadSkills() {
       tooltipText.textContent = skill.name;
       tooltip.appendChild(tooltipText);
 
-      const img = document.createElement('img');
-      img.src = skill.url;
-      img.alt = skill.name;
-      img.classList.add('icon');
+      // Add elements to item
       item.appendChild(img);
-      item.appendChild(tooltip); // Add tooltip
+      item.appendChild(tooltip);
       inventory.appendChild(item);
 
-      // Remove pop-in after animation completes (400ms)
+      // Remove pop-in after animation
       setTimeout(() => item.classList.remove('pop-in'), 400);
 
       // Play audio and animate on hover
@@ -124,6 +128,7 @@ export async function loadSkills() {
         }, 400);
       });
     });
+
   } catch (e) {
     inventory.innerHTML = '<span style="color:#888;">Failed to load skills.</span>';
     console.error('Error loading skills:', e);

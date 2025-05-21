@@ -17,3 +17,12 @@
 .item.pop-out {
   animation: popOut 0.25s cubic-bezier(.68,-0.55,.27,1.55);
 }
+
+/* Caret animation */
+.caret {
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+#filter-btn.open .caret {
+  transform: rotate(180deg);
+}

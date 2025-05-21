@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="src/styles/styles.css" />
     <!-- Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Fugaz+One&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Color+Emoji&family=Noto+Emoji:wght@300&family=Noto+Sans+Tagalog&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Radio+Canada:ital,wght@0,300..700;1,300..700&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DotGothic16&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Color+Emoji&family=Noto+Emoji:wght@300&family=Noto+Sans+Tagalog&family=Road+Rage&family=Russo+One&family=Tektur:wdth,wght@75..100,400..900&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=biz-udgothic:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DotGothic16&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Color+Emoji&family=Noto+Emoji:wght@300&family=Noto+Sans+Tagalog&family=Road+Rage&family=Russo+One&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
@@ -54,7 +56,7 @@
               <a href="https://ko-fi.com/eliogos" target="_blank" rel="noopener noreferrer">
                 <button class="link fill-width icon" type="button">
                   <i data-feather="coffee"></i>
-                  Visit Ko-fi
+                  Go to Ko-fi
                   <i data-feather="external-link"></i>
                 </button>
               </a>
@@ -75,26 +77,25 @@
                       </button>
                       <div class="dropdown-menu" id="sort-dropdown"></div>
                     </div>
-                    <div class="dropdown">
-                      <button class="filter fit-width" type="button" id="view-btn">
-                        <i data-feather="eye"></i>
-                        View as
-                        <i data-feather="chevron-down"></i>
-                      </button>
-                      <div class="dropdown-menu" id="view-dropdown"></div>
-                    </div>
 
-                    <div class="accordion" id="filter-accordion">
-                      <button class="filter fit-width" type="button" id="filter-btn">
-                        <i data-feather="filter"></i>
-                        Filter by Tag
-                        <i data-feather="chevron-down" class="caret"></i>
-                      </button>
-                    </div>
+                    <button class="filter fit-width" type="button" id="filter-btn">
+                      <i data-feather="filter"></i>
+                      Filter by Tag
+                      <i data-feather="chevron-down" class="caret"></i>
+                    </button>
 
                   </div>
-                  <!-- Accordion content goes here, right after button-group -->
-                  <div class="accordion-content" id="filter-chips"></div>
+                  
+                  <div class="accordion-content" id="filter-chips">
+                    <!-- Callout remains static -->
+                    <div class="callout">
+                      <span>Press <kbd>SHIFT</kbd> + <code>CLICK</code> or <b>Long Press</b> to select multiple tags.</span>
+                    </div>
+
+                    <div class="chip-group">
+                      <!-- Chips will be added here dynamically -->
+                    </div>
+                  </div>
                 </div>
                 <div class="inventory" id="inventory"></div>
                 <button class="primary fit-width" type="button">Open in Full View</button>
@@ -119,5 +120,55 @@
     </script>
     <!-- Dropdowns logic -->
     <script src="src/scripts/dropdowns.js"></script>
+
+    <svg style="position: absolute; width: 0; height: 0;">
+  <filter id="distort">
+    <!-- Create noise -->
+    <feTurbulence 
+      type="turbulence" 
+      baseFrequency="0.01 0.01" 
+      numOctaves="2" 
+      seed="2" 
+      stitchTiles="stitch"
+      result="NOISE">
+      <animate 
+        attributeName="baseFrequency" 
+        dur="30s" 
+        values="0.01 0.01;0.02 0.02;0.01 0.01" 
+        repeatCount="indefinite" />
+    </feTurbulence>
+
+    <!-- Create edge mask -->
+    <feMorphology 
+      operator="dilate" 
+      radius="2" 
+      in="SourceAlpha" 
+      result="THICK"/>
+    <feMorphology 
+      operator="erode" 
+      radius="1.8" 
+      in="SourceAlpha" 
+      result="THIN"/>
+    <feComposite 
+      operator="out" 
+      in="THICK" 
+      in2="THIN" 
+      result="EDGES"/>
+
+    <!-- Apply distortion only to edges -->
+    <feDisplacementMap 
+      in="EDGES"
+      in2="NOISE" 
+      scale="5" 
+      result="DISPLACED"/>
+      
+    <!-- Merge with the distorted edges -->
+    <feMerge>
+      <feMergeNode in="SourceGraphic"/>
+      <feMergeNode in="DISPLACED"/>
+    </feMerge>
+
+  </filter>
+</svg>
   </body>
 </html>

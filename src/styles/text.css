@@ -1,11 +1,34 @@
 .content h3 {
-  color: #C9C9C9;
-  font-family: "Tektur", sans-serif;
-  font-size: 1.75rem;
+  color: #d5d5d5;
+  font-family: "Tomorrow", sans-serif;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 93%;
   margin: unset;
   padding: unset;
   cursor: default;
+  text-transform: uppercase;
+}
+
+h1.title {
+  font-family: 'Tomorrow', monospace;
+  font-size: 3.5rem;
+  cursor: default;
+}
+
+p, body {
+  font-family: 'Tomorrow', sans-serif;
+}
+
+button {
+  text-align: center;
+  font-family: "Tomorrow", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: normal;
+}
+
+button:not(.filter) {
+  text-transform: uppercase;
 }

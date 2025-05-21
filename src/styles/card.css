@@ -31,7 +31,6 @@
 
 .card .content p {
   color: var(--Color-Light-Foreground-Block, #F9F4F3);
-  font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-style: normal;
   line-height: normal;
