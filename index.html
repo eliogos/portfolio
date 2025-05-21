@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=biz-udgothic:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DotGothic16&family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Color+Emoji&family=Noto+Emoji:wght@300&family=Noto+Sans+Tagalog&family=Road+Rage&family=Russo+One&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <h1 class="title">ELIOGOS</h1>
@@ -65,14 +66,7 @@
                 <div class="header">
                   <h3>Skills</h3>
                   <div class="button-group">
-                    <div class="dropdown">
-                      <button class="filter fit-width" type="button" id="filter-btn">
-                        <i data-feather="filter"></i>
-                        Filter by Tag
-                        <i data-feather="chevron-down"></i>
-                      </button>
-                      <div class="dropdown-menu" id="filter-dropdown"></div>
-                    </div>
+                    
                     <div class="dropdown">
                       <button class="filter fit-width" type="button" id="sort-btn">
                         <i data-feather="list"></i>
@@ -89,7 +83,18 @@
                       </button>
                       <div class="dropdown-menu" id="view-dropdown"></div>
                     </div>
+
+                    <div class="accordion" id="filter-accordion">
+                      <button class="filter fit-width" type="button" id="filter-btn">
+                        <i data-feather="filter"></i>
+                        Filter by Tag
+                        <i data-feather="chevron-down" class="caret"></i>
+                      </button>
+                    </div>
+
                   </div>
+                  <!-- Accordion content goes here, right after button-group -->
+                  <div class="accordion-content" id="filter-chips"></div>
                 </div>
                 <div class="inventory" id="inventory"></div>
                 <button class="primary fit-width" type="button">Open in Full View</button>

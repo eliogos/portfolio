@@ -1,10 +1,8 @@
 button {
   display: flex;
   padding: 8px 12px;
-
   border-radius: 6px;
   box-shadow: 0px 3px 4px 0px rgba(232, 234, 163, 0.08) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
-
   text-align: center;
   font-family: Tektur, sans-serif;
   font-size: 16px;
@@ -14,9 +12,7 @@ button {
   letter-spacing: 0.32px;
   justify-content: space-between;
   align-items: center;
-
   color: #E3E3E3;
-
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
@@ -69,11 +65,10 @@ a:has(> button) {
 }
 
 .button-group {
-    display: inline-flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-
 
 @media (max-width: 950px) {
   button {
@@ -81,4 +76,75 @@ a:has(> button) {
     padding: 12px 12px;
     margin-top: 12px;
   }
+}
+
+/* Accordion styles */
+#filter-accordion .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(.68,-0.55,.27,1.55), padding 0.2s;
+  padding: 0 0;
+  margin-bottom: 8px;
+}
+
+#filter-accordion.open .accordion-content {
+  max-height: 200px !important;
+  padding: 12px 0 8px 0;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(.68,-0.55,.27,1.55), padding 0.2s;
+  padding: 0 0;
+  margin-bottom: 8px;
+}
+
+.accordion-content.open {
+  max-height: 200px !important;
+}
+
+#filter-accordion.open + .accordion-content {
+  max-height: 200px !important;
+  padding: 12px 0 8px 0;
+}
+
+/* Chip styles */
+.chip {
+  display: inline-block;
+  background: #333;
+  color: #eee;
+  border-radius: 16px;
+  padding: 4px 14px;
+  margin: 4px 6px 4px 0 !important;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border: 1px solid #444;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  font-family: "Tektur";
+}
+.chip:hover {
+  background: #444;
+  color: #fff;
+}
+
+.chip.selected {
+  background: #eb610c;
+  color: #fff;
+  border-color: #eb610c;
+}
+
+/* Caret animation */
+#filter-accordion .caret {
+  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+  display: inline-block;
+}
+
+#filter-accordion.open .caret {
+  transform: rotate(180deg);
 }

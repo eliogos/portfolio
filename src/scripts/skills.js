@@ -1,4 +1,7 @@
 export async function loadSkills() {
+  const inventory = document.getElementById('inventory');
+  inventory.innerHTML = ''; // Clear previous items
+
   try {
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     let audioBuffer = null;
@@ -22,13 +25,17 @@ export async function loadSkills() {
     let lastHoveredItem = null;
     let popOutTimeout = null;
 
-    const response = await fetch('src/assets/data/skills.json');
-    const data = await response.json();
-    const container = document.getElementById('inventory');
-    if (!container) return;
-    (data.skills || []).forEach((skill) => {
+    const res = await fetch('src/assets/data/skills.json');
+    const data = await res.json();
+    const skills = data.skills || [];
+
+    skills.forEach(skill => {
+      // Join tags for the data-tags attribute
+      const tags = (skill.tags || []).join(',');
+      // Create the item element
       const item = document.createElement('div');
-      item.classList.add('item');
+      item.className = 'item pop-in'; // Add pop-in class for animation
+      item.dataset.tags = tags;
 
       // Tooltip span
       const tooltip = document.createElement('span');
@@ -44,7 +51,10 @@ export async function loadSkills() {
       img.classList.add('icon');
       item.appendChild(img);
       item.appendChild(tooltip); // Add tooltip
-      container.appendChild(item);
+      inventory.appendChild(item);
+
+      // Remove pop-in after animation completes (400ms)
+      setTimeout(() => item.classList.remove('pop-in'), 400);
 
       // Play audio and animate on hover
       item.addEventListener('mouseenter', () => {
@@ -66,7 +76,7 @@ export async function loadSkills() {
 
           // Create a gain node for volume control
           const gainNode = audioContext.createGain();
-          const volume = 0.2;
+          const volume = 0.09;
           gainNode.gain.value = volume;
 
           source.connect(gainNode);
@@ -114,13 +124,8 @@ export async function loadSkills() {
         }, 400);
       });
     });
-  } catch (error) {
-    const container = document.getElementById('inventory');
-    if (container) {
-      const p = document.createElement('p');
-      p.textContent = "Cannot load skills"; // Add a message to the container if skills failed to load.
-      container.appendChild(p);
-    }
-    console.error('Error loading skills:', error);
+  } catch (e) {
+    inventory.innerHTML = '<span style="color:#888;">Failed to load skills.</span>';
+    console.error('Error loading skills:', e);
   }
 }

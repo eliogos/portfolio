@@ -23,7 +23,7 @@
     {
       "name": "Adobe Photoshop",
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/512px-Adobe_Photoshop_CC_icon.svg.png?20200616073617",
-      "tags": ["Design"]
+      "tags": ["Design", "Illustration"]
     },
     {
       "name": "Blender",
@@ -99,6 +99,11 @@
       "name": "Microsoft VS Code",
       "url": "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxj7kCzMIlSC20SNjaJf9GmG15ocnF.zbBRgxMSlB7Ejh6FbgNzxLvZOoW7N3ML56fn3m5Z4MO.M8pYrCFVKIhqM-&format=source",
       "tags": ["Data Visualization", "Code"]
+    },
+    {
+      "name": "FireAlpaca",
+      "url": "https://static.wikia.nocookie.net/skeletonhearts/images/3/3d/Fire_alpaca_logo.png/",
+      "tags": ["Illustration"]
     }
   ]
 }
