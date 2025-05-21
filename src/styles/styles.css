@@ -99,6 +99,7 @@ div.header div.background {
   border-radius: 9px;
   border: 0.3px solid #EB610C;
   position: relative;
+  overflow: hidden;
 }
 
 div.header div.background div.overlay {
