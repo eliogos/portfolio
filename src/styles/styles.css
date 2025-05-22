@@ -2,6 +2,9 @@
 @import url('./text.css');
 @import url('./card.css');
 @import url('./animation.css');
+@import url('./modals.css');
+@import url('./sliders.css');
+@import url('./theme.css');
 
 :root {
   font-family: system-ui, Avenir, DotGothic16, Helvetica, Arial, sans-serif;
@@ -23,6 +26,8 @@
   --radius-card: 9px;
   --radius-btn: 11px;
   --gap-main: 30px;
+
+  --texture-opacity: 0.1;
 }
 
 a {
@@ -95,7 +100,7 @@ body::after {
   height: 100vh;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.1;
+  opacity: var(--texture-opacity);
   mix-blend-mode: overlay;
 
   animation: texture-shift 2s steps(6, jump-both) infinite;
@@ -484,6 +489,10 @@ div.item img.icon {
     overflow-x: hidden;
   }
 
+  body::after {
+    opacity: 0.2;
+  }
+
   body > div.main-content {
     padding: 10px 20px 150px 20px;
     grid-template-columns: 1fr;
@@ -509,4 +518,54 @@ div.item img.icon {
     height: unset;
   }
 
+}
+
+.disable-effects .main-content {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.disable-effects .main-content {
+  will-change: auto !important;
+  transform: none !important;
+}
+
+/* Setting states */
+.disable-texture::after {
+  display: none !important;
+}
+
+.disable-header-texture .grunge-mask {
+  background-image: none !important;
+}
+
+
+.disable-animations .modal-overlay > * {
+  animation: none !important;
+}
+
+.disable-animations #distort feTurbulence animate {
+  animation-play-state: paused !important;
+}
+
+.disable-animations body::after {
+  animation: none !important;
+}
+
+.disable-animations .tooltip,
+.disable-animations .item,
+.disable-animations .dropdown-menu,
+.disable-animations .chip,
+.disable-animations button,
+.disable-animations::after {
+  transition: none !important;
+  animation: none !important;
+  animation-play-state: paused !important;
+}
+
+.disable-distortion .main-content, .disable-distortion button {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  will-change: auto !important;
+  transform: none !important;
 }

@@ -1,0 +1,14 @@
+.light-theme {
+  --color-bg-primary: #f5f5f5;
+  --color-card-bg: #ffffff;
+  color: #212121;
+}
+
+.basic-font *{
+  font-family: system-ui, -apple-system, sans-serif !important;
+}
+
+.modal-overlay {
+  -webkit-backdrop-filter: blur(var(--backdrop-blur, 10px)) !important;
+  backdrop-filter: blur(var(--backdrop-blur, 10px)) !important;
+}

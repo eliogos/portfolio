@@ -121,6 +121,104 @@
         <p>"Do you see a person skilled in his work? He will stand before kings; He will not stand before obscure people.”</p>
       </div>
     </div>
+    <!-- Settings Modal -->
+    <div class="modal-overlay">
+      <div class="card settings-modal">
+        <div class="content">
+          <h3>Website Settings</h3>
+          <span class="description">
+            Change how you want the website to look and feel, or disable some features that may slow down your device to experience this page without any issues.
+          </span>
+          <div class="settings-group">
+            <!-- Textures Category -->
+            <div class="category">
+              <span>Textures</span>
+              <label class="setting-row">
+                <span>Disable Art Texture</span>
+                <input type="checkbox" id="disable-header-texture">
+              </label>
+              <label class="setting-row">
+                <span>Page Texture Opacity</span>
+                <div class="slider-container">
+                  <input 
+                    type="range" 
+                    id="texture-opacity" 
+                    min="0" 
+                    max="1" 
+                    value="0.1"
+                    step="0.1"
+                    class="slider">
+                  <span class="slider-value">10%</span>
+                </div>
+              </label>
+            </div>
+            
+            <!-- Motion Category -->
+            <div class="category">
+              <span>Motion</span>
+              <label class="setting-row">
+                <span>Disable Animations</span>
+                <input type="checkbox" id="disable-animations">
+              </label>
+              <label class="setting-row">
+                <span>Disable Turbulence Filter</span>
+                <input type="checkbox" id="disable-distortion">
+              </label>
+            </div>
+
+            <!-- Sounds Category -->
+            <div class="category">
+              <span>Sounds</span>
+              <label class="setting-row">
+                <span>Volume</span>
+                <div class="slider-container">
+                  <input 
+                    type="range" 
+                    id="volume" 
+                    min="0" 
+                    max="1" 
+                    value="0.5"
+                    step="0.1"
+                    class="slider">
+                  <span class="slider-value">50%</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Misc Category -->
+            <div class="category">
+              <span>Miscellaneous</span>
+              <label class="setting-row">
+                <span>Light Theme</span>
+                <input type="checkbox" id="switch-theme">
+              </label>
+
+              <label class="setting-row">
+                <span>Use Basic Font</span>
+                <input type="checkbox" id="use-basic-font">
+              </label>
+
+             <label class="setting-row">
+                <span>Background Blur</span>
+                <div class="slider-container">
+                  <input 
+                    type="range" 
+                    id="blur-amount" 
+                    min="0" 
+                    max="10" 
+                    value="10"
+                    step="2"
+                    class="slider">
+                  <span class="slider-value">100%</span>
+                </div>
+              </label>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Feather icons replacement -->
     <script>
       feather.replace({class: 'btn-icon', 'stroke-width': 2, width: 18, height: 18});
@@ -182,5 +280,7 @@
 
   </filter>
     </svg>
+    <script src="src/scripts/settings.js"></script>
+    
   </body>
 </html>
