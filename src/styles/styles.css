@@ -489,10 +489,6 @@ div.item img.icon {
     overflow-x: hidden;
   }
 
-  body::after {
-    opacity: 0.2;
-  }
-
   body > div.main-content {
     padding: 10px 20px 150px 20px;
     grid-template-columns: 1fr;
