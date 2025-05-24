@@ -1,12 +1,15 @@
 .slider {
   width: 100px;
-  height: 4px;
-  border-radius: 2px;
-  background: #3d3d3d;
+  height: 8px;
+  border-radius: 6px;
+  background: #464646;
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  touch-action: pan-y;
+  cursor: pointer;
+  transition: background 0.15s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -17,6 +20,7 @@
   background: var(--color-accent);
   cursor: pointer;
   border: none;
+  transition: transform 0.15s;
 }
 
 .slider::-moz-range-thumb {
@@ -26,6 +30,7 @@
   background: var(--color-accent);
   cursor: pointer;
   border: none;
+  transition: transform 0.15s;
 }
 
 .slider-container {

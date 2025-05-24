@@ -36,3 +36,47 @@
   line-height: normal;
   align-self: stretch;
 }
+
+.about-details {
+  display: none;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.show-about .about-details {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-group {
+  margin-bottom: 1.5rem;
+}
+
+.info-group h4 {
+  font-size: 0.9em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  background: var(--color-card-hover);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.9em;
+}

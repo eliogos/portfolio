@@ -45,8 +45,56 @@
               <div class="content">
                 <h3>About Me</h3>
                 <p>A multimedia artist and animator from the Philippines.</p>
+                
+                <!-- Additional Info (only shown when expanded) -->
+                <div class="about-details">
+                  <div class="info-group">
+                    <h4>Basic Info</h4>
+                    <div class="info-row">
+                      <span>Date of Birth</span>
+                      <span>18 February 2003</span>
+                    </div>
+                    <div class="info-row">
+                      <span>MBTI</span>
+                      <span>INTP-T</span>
+                    </div>
+                    <div class="info-row">
+                      <span>Height</span>
+                      <span>REDACTED</span>
+                    </div>
+                  </div>
+
+                  <div class="info-group">
+                    <h4>Languages</h4>
+                    <div class="pill-group">
+                      <span class="pill">Filipino</span>
+                      <span class="pill">English</span>
+                      <span class="pill">Spanish</span>
+                    </div>
+                  </div>
+
+                  <div class="info-group">
+                    <h4>Coding</h4>
+                    <div class="pill-group">
+                      <span class="pill">HTML</span>
+                      <span class="pill">CSS</span>
+                      <span class="pill">JavaScript</span>
+                      <span class="pill">Python</span>
+                    </div>
+                  </div>
+
+                  <div class="info-group">
+                    <h4>Hobbies</h4>
+                    <p>REDACTED</p>
+                  </div>
+
+                  <div class="info-group">
+                    <h4>Education</h4>
+                    <p>2025: BS New Media & Computer Animation, Ateneo de Zamboanga</p>
+                  </div>
+                </div>
               </div>
-              <button class="primary fill-width" type="button">Learn More</button>
+              <button class="primary fill-width" type="button" id="about-me-btn">Learn More</button>
             </div>
             <div class="card">
               <div class="content">
@@ -87,7 +135,7 @@
                   </div>
                   
                   <div class="accordion-content" id="filter-chips">
-                    <!-- Callout remains static -->
+
                     <div class="callout">
                       <span>Press <kbd>SHIFT</kbd> + <code>CLICK</code> or <b>Long Press</b> to select multiple tags.</span>
                     </div>
@@ -126,8 +174,13 @@
       <div class="card settings-modal">
         <div class="content">
           <h3>Website Settings</h3>
+
+          <div class="callout">
+              <span>Press <kbd>ESC</kbd> or <b>Restart the page</b> to open this modal.</span>
+          </div>
+
           <span class="description">
-            Change how you want the website to look and feel, or disable some features that may slow down your device to experience this page without any issues.
+            Make the website look and feel just the way you want, or turn off some features that might slow things down for a smoother experience.
           </span>
           <div class="settings-group">
             <!-- Textures Category -->
@@ -194,7 +247,7 @@
               </label>
 
               <label class="setting-row">
-                <span>Use Basic Font</span>
+                <span>Use System Font</span>
                 <input type="checkbox" id="use-basic-font">
               </label>
 
@@ -207,7 +260,7 @@
                     min="0" 
                     max="10" 
                     value="10"
-                    step="2"
+                    step="0.1"
                     class="slider">
                   <span class="slider-value">100%</span>
                 </div>

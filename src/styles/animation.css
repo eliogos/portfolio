@@ -26,3 +26,44 @@
 #filter-btn.open .caret {
   transform: rotate(180deg);
 }
+
+/* Hide everything except about me card */
+.welcomeboard.show-about > *:not(.dashboard),
+.welcomeboard.show-about .dashboard > *:not(.top),
+.welcomeboard.show-about .dashboard .top > *:not(:first-child) {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.welcomeboard.show-about > *:not(.dashboard),
+.welcomeboard.show-about .dashboard > *:not(.top),
+.welcomeboard.show-about .dashboard .top > *:not(:first-child) {
+  display: none;
+  transition-delay: 0.3s;
+}
+
+.welcomeboard.show-about {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+
+.welcomeboard .dashboard .top .card:first-child {
+  transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.welcomeboard.show-about .dashboard .top .card:first-child {
+  width: 100%;
+  flex-grow: 1;
+  transform: scale(1.02);
+  height: fit-content;
+  
+}
+
+.welcomeboard:not(.show-about) .dashboard .top > * {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  display: flex;
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
