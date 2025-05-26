@@ -131,14 +131,6 @@ function initializeSettings() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeSettings();
-
-  const aboutMeBtn = document.getElementById('about-me-btn');
-  const welcomeboard = document.querySelector('.welcomeboard');
-  
-  aboutMeBtn.addEventListener('click', () => {
-    welcomeboard.classList.toggle('show-about');
-    aboutMeBtn.textContent = welcomeboard.classList.contains('show-about') ? 'Go Back' : 'Learn More';
-  });
 });
 
 function toggleAnimations(disable) {

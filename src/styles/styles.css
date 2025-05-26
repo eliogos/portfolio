@@ -278,7 +278,7 @@ div.dashboard {
   justify-content: space-between;
 }
 
-.dashboard > .bottom .content .header {
+.dashboard > .bottom .content .row {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -615,3 +615,82 @@ kbd, code {
   will-change: auto !important;
   transform: none !important;
 }
+
+
+/* Floating Navigation */
+.floating-nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #fff;
+}
+
+.nav-item.active {
+  color: var(--color-accent);
+}
+
+.nav-item i {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Layout containers for different pages */
+.page-container {
+  display: none;
+  width: 100%;
+}
+
+.page-container.active {
+  display: block;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-card);
+  margin-bottom: 1rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
