@@ -23,7 +23,9 @@
 
   </head>
   <body>
-    <h1 class="title">ELIOGOS</h1>
+    <div id="main-title-container" style="display: flex; align-items: center; justify-content: center;">
+      <h1 id="main-title" class="title" style="margin: 0;">ELIOGOS</h1>
+    </div>
     
 <nav class="floating-nav">
   <div class="nav-links">
@@ -46,6 +48,10 @@
     <a href="#" class="nav-item" data-page="links">
       <i data-feather="link-2"></i>
       <span>Links</span>
+    </a>
+    <div class="hline"></div>
+    <a href="#settings" class="nav-item" data-page="settings">
+      <i data-feather="settings"></i>
     </a>
   </div>
 </nav>
@@ -119,7 +125,7 @@
                   </div>
                 </div>
               </div>
-              <button class="primary fill-width" type="button" id="about-me-trigger">Learn More</button>
+<button id="about-me-btn" class="about-me-trigger primary fill-width">Learn More</button>
             </div>
             <div class="card">
               <div class="content">
