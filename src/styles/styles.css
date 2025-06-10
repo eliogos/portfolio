@@ -506,6 +506,10 @@ kbd, code {
     overflow-x: hidden;
   }
 
+  .nav-links span {
+    display: none;
+  }
+
   body > div.main-content {
     padding: 10px 20px 150px 20px;
     grid-template-columns: 1fr;
