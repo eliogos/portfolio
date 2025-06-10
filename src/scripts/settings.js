@@ -46,10 +46,35 @@ function initializeSettings() {
     localStorage.setItem('animations', e.target.checked);
   });
 
-  // Distortion toggle
-  document.getElementById('disable-distortion').addEventListener('change', (e) => {
-    document.body.classList.toggle('disable-distortion', e.target.checked);
-    localStorage.setItem('distortion', e.target.checked);
+  // Turbulence (Enable Distortion) toggle
+  const enableDistortion = document.getElementById('enable-distortion');
+  const warningModal = document.getElementById('turbulence-warning-modal');
+  const warningOk = document.getElementById('turbulence-warning-ok');
+
+  enableDistortion.addEventListener('change', (e) => {
+    if (e.target.checked) {
+      // Show warning modal
+      warningModal.style.display = 'flex';
+      // Wait for confirmation
+      warningOk.onclick = () => {
+        warningModal.style.display = 'none';
+        enableDistortion.checked = true;
+        document.body.classList.remove('disable-distortion');
+        localStorage.setItem('distortion', true);
+      };
+      // If modal is closed otherwise, revert checkbox
+      warningModal.onclick = (evt) => {
+        if (evt.target === warningModal) {
+          warningModal.style.display = 'none';
+          enableDistortion.checked = false;
+        }
+      };
+      // Temporarily uncheck until confirmed
+      enableDistortion.checked = false;
+    } else {
+      document.body.classList.add('disable-distortion');
+      localStorage.setItem('distortion', false);
+    }
   });
 
   // Volume slider
@@ -92,6 +117,7 @@ function initializeSettings() {
     blurAmount: localStorage.getItem('blurAmount') || '10',
     headerTexture: localStorage.getItem('headerTexture') === 'true',
     animations: localStorage.getItem('animations') === 'true',
+    // Default to false (unchecked) if not set
     distortion: localStorage.getItem('distortion') === 'true',
     volume: localStorage.getItem('volume') || '0.5',
     textureOpacity: localStorage.getItem('textureOpacity') || '0.1'
@@ -103,9 +129,9 @@ function initializeSettings() {
   document.getElementById('blur-amount').value = savedSettings.blurAmount;
   document.getElementById('disable-header-texture').checked = savedSettings.headerTexture;
   document.getElementById('disable-animations').checked = savedSettings.animations;
-  document.getElementById('disable-distortion').checked = savedSettings.distortion;
   document.getElementById('volume').value = savedSettings.volume;
   document.getElementById('texture-opacity').value = savedSettings.textureOpacity;
+  enableDistortion.checked = savedSettings.distortion;
 
   // Apply states
   document.body.classList.toggle('light-theme', savedSettings.theme);
@@ -113,7 +139,8 @@ function initializeSettings() {
   document.documentElement.style.setProperty('--backdrop-blur', `${savedSettings.blurAmount}px`);
   document.body.classList.toggle('disable-header-texture', savedSettings.headerTexture);
   document.body.classList.toggle('disable-animations', savedSettings.animations);
-  document.body.classList.toggle('disable-distortion', savedSettings.distortion);
+  
+  document.body.classList.toggle('disable-distortion', !savedSettings.distortion);
   document.body.classList.toggle('disable-texture', savedSettings.textureOpacity == 0);
   document.documentElement.style.setProperty('--texture-opacity', savedSettings.textureOpacity);
 
@@ -131,6 +158,15 @@ function initializeSettings() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeSettings();
+
+  // Open settings modal when clicking nav
+  const navSettings = document.querySelector('.nav-item[data-page="settings"]');
+  if (navSettings) {
+    navSettings.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.modal-overlay').style.display = 'flex';
+    });
+  }
 });
 
 function toggleAnimations(disable) {

@@ -694,3 +694,6 @@ kbd, code {
   gap: 0.5rem;
 }
 
+iframe {
+  border-radius: 8px;
+}

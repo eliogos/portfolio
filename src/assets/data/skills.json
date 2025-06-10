@@ -77,7 +77,7 @@
     },
     {
       "name": "Canva",
-      "url": "https://www.edigitalagency.com.au/wp-content/uploads/Canva-icon-gradient-png.png",
+      "url": "https://freelogopng.com/images/all_img/1656733807canva-icon-png.png",
       "tags": ["Design"]
     },
     {
@@ -104,6 +104,11 @@
       "name": "FireAlpaca",
       "url": "https://static.wikia.nocookie.net/skeletonhearts/images/3/3d/Fire_alpaca_logo.png/",
       "tags": ["Illustration", "Animation"]
+    },
+    {
+      "name": "CLIP STUDIO PAINT",
+      "url": "https://upload.wikimedia.org/wikipedia/en/6/66/Clip_Studio_Paint_app_logo.png",
+      "tags": ["Illustration"]
     }
   ]
 }
