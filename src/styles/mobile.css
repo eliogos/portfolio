@@ -1,0 +1,283 @@
+body > div.main-content {
+  padding: 0 90px 150px 90px;
+}
+
+@media (max-width: 1100px) {
+  body > div.main-content {
+    padding: 0 40px 150px 40px;
+  }
+}
+
+@media (max-width: 950px) {
+  body > div.main-content {
+    padding: 10px 16px 140px 16px !important;
+    grid-template-columns: 1fr;
+    width: auto;
+  }
+
+  body > div.main-content > div.welcomeboard {
+    grid-template-columns: 1fr !important;
+    grid-row-gap: 16px;
+  }
+
+  /* ── Hero section ── */
+  body > div.main-content > div.welcomeboard > div.header {
+    min-width: unset !important;
+    width: 100%;
+    height: 340px;
+  }
+
+  /* Character illustration: smaller, repositioned for mobile */
+  div.illustration {
+    width: 100% !important;
+    max-width: 100% !important;
+    background-size: 160% !important;
+    background-position-x: -60px !important;
+    background-position-y: center !important;
+  }
+
+  /* Title text in hero */
+  div.overlay > div.text span {
+    font-size: 140pt !important;
+    letter-spacing: -14px !important;
+  }
+
+  /* ── Dashboard ── */
+  div.dashboard {
+    padding-top: 0 !important;
+    gap: 14px !important;
+  }
+
+  .dashboard > .top {
+    flex-direction: column;
+    gap: 14px !important;
+  }
+
+  .dashboard > .top > .card {
+    width: 100% !important;
+    min-width: unset !important;
+    height: auto !important;
+    flex: unset;
+  }
+
+  /* ── About me expanded ── */
+  .show-about .card {
+    height: auto !important;
+    min-height: 60vh;
+  }
+
+  /* ── Skills card ── */
+  #inventory {
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+    gap: 8px;
+  }
+
+  div.item img.icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* ── Buttons ── */
+  button {
+    font-size: 15px !important;
+    padding: 11px 14px !important;
+    margin-top: 8px !important;
+  }
+
+  button.filter {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    margin-top: 0 !important;
+  }
+
+  /* ── Floating nav: full width pill ── */
+  .floating-nav {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 480px;
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .nav-links {
+    gap: 0;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-item {
+    flex: 1;
+    gap: 0.2rem;
+    font-size: 0.65rem;
+    padding: 4px 0;
+  }
+
+  .nav-item span {
+    display: block !important;
+    font-size: 0.6rem;
+    line-height: 1;
+  }
+
+  .nav-item i {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Hide the divider line in nav on mobile */
+  .floating-nav .hline {
+    display: none;
+  }
+
+  /* ── Settings modal ── */
+  .settings-modal {
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+    margin: 16px !important;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  /* ── Chip group wrapping ── */
+  .chip-group {
+    gap: 6px;
+  }
+
+  .chip {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+  }
+
+  /* ── Sort/filter button group ── */
+  .button-group {
+    gap: 6px;
+    width: 100%;
+  }
+
+  /* ── Bento grid (about me) ── */
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .bento-bio,
+  .bento-media,
+  .bento-edu {
+    grid-column: span 2 !important;
+  }
+
+  .bento-fact,
+  .bento-info,
+  .bento-langs {
+    grid-column: span 1 !important;
+  }
+
+  .bento-card {
+    transform: none !important;
+  }
+
+  /* ── Callout box ── */
+  .callout kbd, .callout code {
+    font-size: 0.8rem;
+  }
+
+  /* ── Slider rows ── */
+  .setting-row:has(input[type="range"]) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slider {
+    width: 100% !important;
+    height: 18px !important;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .slider-container {
+    width: 100% !important;
+    padding: 8px 0 8px 4px !important;
+  }
+
+  /* ── Main title ── */
+  #main-title-container {
+    padding: 12px 16px 4px;
+  }
+
+  h1.title {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* ── Very small screens ── */
+@media (max-width: 380px) {
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bento-bio,
+  .bento-fact,
+  .bento-media,
+  .bento-info,
+  .bento-langs,
+  .bento-edu {
+    grid-column: span 1 !important;
+  }
+
+  .nav-item span {
+    display: none !important;
+  }
+
+  .nav-item {
+    font-size: 0;
+  }
+}
+
+
+@media (max-width: 950px) {
+  /* Kill backdrop blur on modal — biggest GPU drain */
+  .modal-overlay {
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+
+  /* Disable SVG distortion filter on mobile */
+  body > div.main-content {
+    filter: none !important;
+  }
+
+  button {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  /* Reduce body texture animation frames */
+  body::after {
+    animation-duration: 4s !important;
+    opacity: 0.06 !important;
+  }
+
+  /* No mix-blend on cards — saves compositing layers */
+  body > div.main-content {
+    mix-blend-mode: normal !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  body::after {
+    animation: none !important;
+  }
+}
