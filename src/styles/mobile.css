@@ -242,7 +242,7 @@ body > div.main-content {
 }
 
 
-@media (max-width: 950px) {
+@media (max-width: 1024px) {
   /* Kill backdrop blur on modal — biggest GPU drain */
   .modal-overlay {
     -webkit-backdrop-filter: blur(4px) !important;
