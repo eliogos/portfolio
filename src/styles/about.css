@@ -321,7 +321,7 @@
 .bento-card:nth-child(6) { animation-delay: 0.30s; }
 
 /* ── Responsive ── */
-@media (max-width: 950px) {
+@media (max-width: 1024px) {
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
