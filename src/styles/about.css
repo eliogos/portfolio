@@ -1,0 +1,345 @@
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  gap: 12px;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* ── Card base ── */
+.bento-card {
+  background: #2a2a2a;
+  border: 0.5px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: popIn 0.4s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+
+/* scanline texture overlay */
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.07) 2px,
+    rgba(0,0,0,0.07) 4px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.bento-card > * { position: relative; z-index: 1; }
+
+/* ── Tilt variants ── */
+.tilt-left  { transform: rotate(-1.2deg); }
+.tilt-right { transform: rotate(1deg); }
+.tilt-slight { transform: rotate(0.4deg); }
+
+.bento-card:hover {
+  transform: rotate(0deg) scale(1.02) !important;
+  border-color: rgba(235, 97, 12, 0.35);
+  transition: transform 0.25s cubic-bezier(.68,-0.55,.27,1.55),
+              border-color 0.2s ease;
+  z-index: 10;
+}
+
+/* ── Grid placement ── */
+.bento-bio      { grid-column: span 4; grid-row: span 1; }
+.bento-fact     { grid-column: span 2; grid-row: span 1; }
+.bento-media    { grid-column: span 3; grid-row: span 1; }
+.bento-info     { grid-column: span 3; grid-row: span 1; }
+.bento-langs    { grid-column: span 2; grid-row: span 1; }
+.bento-edu      { grid-column: span 4; grid-row: span 1; }
+
+/* ── Card labels ── */
+.bento-label {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #EB610C;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+/* ── Bio card ── */
+.bento-bio .bio-text {
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+}
+
+.bento-bio .bio-name {
+  font-family: 'Tektur', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.bento-bio .bio-handle {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.8rem;
+  color: #EB610C;
+  opacity: 0.8;
+}
+
+/* ── Fact card ── */
+.bento-fact {
+  background: linear-gradient(135deg, #2a1a0e, #1e1e1e);
+  border-color: rgba(235, 97, 12, 0.2);
+  cursor: pointer;
+}
+
+.fact-text {
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #ccc;
+  flex: 1;
+}
+
+.fact-refresh {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.65rem;
+  color: #EB610C;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 0.5px solid rgba(235,97,12,0.2);
+}
+
+.fact-refresh svg {
+  transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.bento-fact:hover .fact-refresh svg {
+  transform: rotate(180deg);
+}
+
+/* ── Media card (anime/games/music/film) ── */
+.media-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.media-tab {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid #444;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.15s;
+  mix-blend-mode: normal;
+  filter: none;
+  margin-top: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.media-tab.active,
+.media-tab:hover {
+  background: #EB610C;
+  border-color: #EB610C;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  min-height: 80px;
+}
+
+.media-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: popIn 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.media-icon {
+  font-size: 1rem;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.media-title {
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 0.8rem;
+  color: #d4d4d4;
+  line-height: 1.3;
+}
+
+.media-sub {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.65rem;
+  color: #666;
+}
+
+/* ── Info card ── */
+.info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 7px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+}
+
+.info-row-item:last-child { border-bottom: none; }
+
+.info-key {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.info-val {
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 0.8rem;
+  color: #d4d4d4;
+}
+
+/* ── Languages card ── */
+.lang-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lang-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lang-name {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.75rem;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lang-bar-track {
+  height: 3px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lang-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #EB610C, #f0934a);
+  border-radius: 2px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.bento-card.in-view .lang-bar-fill {
+  transform: scaleX(1);
+}
+
+/* ── Education card ── */
+.bento-edu {
+  background: linear-gradient(120deg, #1e1e1e, #251a14);
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.edu-year {
+  font-family: 'Tektur', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #EB610C;
+  opacity: 0.25;
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.04em;
+}
+
+.edu-content { flex: 1; }
+
+.edu-degree {
+  font-family: 'Tomorrow', sans-serif;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.edu-school {
+  font-family: 'Tektur', sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* ── Stagger animation delays ── */
+.bento-card:nth-child(1) { animation-delay: 0.05s; }
+.bento-card:nth-child(2) { animation-delay: 0.10s; }
+.bento-card:nth-child(3) { animation-delay: 0.15s; }
+.bento-card:nth-child(4) { animation-delay: 0.20s; }
+.bento-card:nth-child(5) { animation-delay: 0.25s; }
+.bento-card:nth-child(6) { animation-delay: 0.30s; }
+
+/* ── Responsive ── */
+@media (max-width: 950px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-bio,
+  .bento-fact,
+  .bento-media,
+  .bento-info,
+  .bento-langs,
+  .bento-edu {
+    grid-column: span 2;
+  }
+  .bento-card {
+    transform: none !important;
+  }
+  .bento-card:hover {
+    transform: scale(1.01) !important;
+  }
+}
+
+
+
